@@ -1,0 +1,55 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.view-selector {
+  display: flex;
+
+  .icon-link {
+    border: 1px solid black;
+
+    &:hover {
+      background: #bbb;
+    }
+
+    &.active {
+      background: black;
+      color: white;
+    }
+  }
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+
+  .action:hover {
+    background: #ccc;
+  }
+
+  .pages {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 8px;
+  }
+
+  .page {
+    button {
+      line-height: 40px;
+      padding: 0 8px;
+      border: 0;
+      background: 0;
+      color: #ccc;
+    }
+
+    &:hover button,
+    &.current button {
+      color: black;
+    }
+  }
+}

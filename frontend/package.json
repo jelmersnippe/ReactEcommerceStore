@@ -1,0 +1,44 @@
+{
+    "name": "js-store",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src"
+    },
+    "dependencies": {
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-scripts": "4.0.2",
+        "react-router-dom": "5.2.0",
+        "@material-ui/core": "4.11.3",
+        "@material-ui/icons": "4.11.2",
+        "node-sass": "5.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^12.20.0",
+        "@types/react": "17.0.2",
+        "@types/react-dom": "17.0.1",
+        "@types/react-router-dom": "5.1.7",
+        "eslint": "7.20.0",
+        "typescript": "4.1.5"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

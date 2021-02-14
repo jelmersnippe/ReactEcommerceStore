@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  testjs_backend:
+    build: ./
+    container_name: testjs_backend
+    ports:
+      - 4040:4040
+    environment:
+      - CONFIG_DATABASE_HOST=testjs_database
+      - CONFIG_DATABASE_PORT=5432
+      - CONFIG_DATABASE_DATABASE=testjs
+      - CONFIG_DATABASE_USERNAME=testjs
+      - CONFIG_DATABASE_PASSWORD=testjs
+    depends_on:
+      - testjs_database
+    links:
+      - testjs_database
+    restart: 'no'
+
+  testjs_database:
+    image: postgres:12.3
+    container_name: testjs_database
+    ports:
+      - 4041:5432
+    environment:
+      - POSTGRES_DB=testjs
+      - POSTGRES_USER=testjs
+      - POSTGRES_PASSWORD=testjs
+    volumes:
+      - postgres-testjs:/var/lib/postgresql/data
+    restart: 'no'
+
+volumes:
+  postgres-testjs:

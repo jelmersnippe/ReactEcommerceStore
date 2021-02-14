@@ -1,0 +1,47 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  transition: flex-grow 0.2s;
+  position: relative;
+
+  @media (min-width: 768px) {
+    border: 1px solid black;
+    padding: 0 8px;
+  }
+
+  &:focus-within {
+    flex-grow: 1;
+
+    @media (max-width: 768px) {
+      > input {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  > input {
+    border: none;
+    flex: 1;
+    padding: 0 8px;
+
+    @media (max-width: 768px) {
+      position: absolute;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: center left;
+      transition: transform 200ms ease-in-out;
+      width: calc(100% - 40px);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .search {
+      position: relative;
+      margin-left: auto;
+    }
+  }
+}

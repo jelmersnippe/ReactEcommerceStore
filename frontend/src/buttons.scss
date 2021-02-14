@@ -1,0 +1,18 @@
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding: 8px 16px;
+  border: 1px solid black;
+}
+
+.icon-link {
+  border: none;
+  padding: 8px;
+}
