@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table, TableIndex} from 'typeorm';
 import {NotImplementedException} from '@nestjs/common';
 
-export class Migration0100000000001 implements MigrationInterface {
+export class Migration0100000000003 implements MigrationInterface {
 
     async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'user',
+            name: 'product',
             columns: [
                 {
                     name: 'id',
@@ -15,21 +15,27 @@ export class Migration0100000000001 implements MigrationInterface {
                     default: 'uuid_generate_v4()'
                 },
                 {
-                    name: 'email',
+                    name: 'name',
+                    type: 'varchar'
+                },
+                {
+                    name: 'sku',
                     type: 'varchar',
                     isUnique: true
                 },
                 {
-                    name: 'first_name',
-                    type: 'varchar'
+                    name: 'image',
+                    type: 'varchar',
+                    isNullable: true
                 },
                 {
-                    name: 'last_name',
-                    type: 'varchar'
+                    name: 'price',
+                    type: 'integer'
                 },
                 {
-                    name: 'password',
-                    type: 'varchar'
+                    name: 'stock',
+                    type: 'integer',
+                    default: 0
                 },
                 {
                     name: 'active',
@@ -44,7 +50,11 @@ export class Migration0100000000001 implements MigrationInterface {
             ]
         }));
 
-        await queryRunner.createIndex('user', new TableIndex({
+        await queryRunner.createIndex('product', new TableIndex({
+            columnNames: ['sku']
+        }));
+
+        await queryRunner.createIndex('product', new TableIndex({
             columnNames: ['active']
         }));
     }

@@ -1,11 +1,11 @@
-import {MigrationInterface, QueryRunner, Table, TableIndex} from 'typeorm';
+import {MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex} from 'typeorm';
 import {NotImplementedException} from '@nestjs/common';
 
-export class Migration0100000000001 implements MigrationInterface {
+export class Migration0100000000002 implements MigrationInterface {
 
     async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'user',
+            name: 'category',
             columns: [
                 {
                     name: 'id',
@@ -15,21 +15,19 @@ export class Migration0100000000001 implements MigrationInterface {
                     default: 'uuid_generate_v4()'
                 },
                 {
-                    name: 'email',
+                    name: 'title',
                     type: 'varchar',
                     isUnique: true
                 },
                 {
-                    name: 'first_name',
-                    type: 'varchar'
+                    name: 'slug',
+                    type: 'varchar',
+                    isUnique: true
                 },
                 {
-                    name: 'last_name',
-                    type: 'varchar'
-                },
-                {
-                    name: 'password',
-                    type: 'varchar'
+                    name: 'parent_category_id',
+                    type: 'uuid',
+                    isNullable: true
                 },
                 {
                     name: 'active',
@@ -44,7 +42,17 @@ export class Migration0100000000001 implements MigrationInterface {
             ]
         }));
 
-        await queryRunner.createIndex('user', new TableIndex({
+        await queryRunner.createForeignKey('category', new TableForeignKey({
+            columnNames: ['parent_category_id'],
+            referencedTableName: 'category',
+            referencedColumnNames: ['id']
+        }));
+
+        await queryRunner.createIndex('category', new TableIndex({
+            columnNames: ['parent_category_id']
+        }));
+
+        await queryRunner.createIndex('category', new TableIndex({
             columnNames: ['active']
         }));
     }

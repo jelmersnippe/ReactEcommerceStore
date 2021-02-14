@@ -6,6 +6,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import CategoryPage from './Components/CategoryPage';
 import Footer from './Components/Footer';
+import React from 'react';
 
 function App() {
     return (

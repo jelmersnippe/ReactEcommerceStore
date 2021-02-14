@@ -5,6 +5,7 @@ import {AppController} from './AppController';
 import {ConfigModule, ConfigService} from '@nestjs/config';
 import {AuthModule} from '../auth/AuthModule';
 import {PassportModule} from '@nestjs/passport';
+import {CategoryModule} from '../entities/category/CategoryModule';
 
 @Module({
     imports: [
@@ -40,7 +41,8 @@ import {PassportModule} from '@nestjs/passport';
                 }
             })
         }),
-        UserModule
+        UserModule,
+        CategoryModule
     ],
     controllers: [
         AppController

@@ -7,7 +7,7 @@
       "esnext"
     ],
     "allowJs": false,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",

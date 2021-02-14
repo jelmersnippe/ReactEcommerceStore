@@ -4,6 +4,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import './product_item.scss';
 import {ReactElement} from 'react';
+import React from 'react';
 
 function ProductItem({product: {imageUrl, name, sku, price, stock_status}}: {product: {imageUrl: string, name: string, sku: string, price: number, stock_status: number}}): ReactElement {
     return (

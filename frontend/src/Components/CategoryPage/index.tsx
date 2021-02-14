@@ -3,6 +3,7 @@ import "./category_page.scss";
 import {ReactElement} from 'react';
 import Toolbar from '../Toolbar';
 import ProductItem from '../ProductItem';
+import React from "react";
 
 const product1 = {
     imageUrl: "shoes.jpg",

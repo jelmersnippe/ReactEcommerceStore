@@ -30,7 +30,7 @@ export class UserController {
     @ApiInternalServerErrorResponse()
     @Patch(':id')
     @UseGuards(AuthGuard())
-    @HttpCode(201)
+    @HttpCode(200)
     async update(
         @Param('id', ParseUUIDPipe) id: string,
         @Body() newUserData: UpdateUserDto
@@ -40,13 +40,11 @@ export class UserController {
             .then((user: UserEntity) => new UserDto(user))
     }
 
-    @ApiBearerAuth()
     @ApiOkResponse({description: '', type: UserDto})
     @ApiUnauthorizedResponse()
     @ApiConflictResponse()
     @ApiInternalServerErrorResponse()
     @Post()
-    @UseGuards(AuthGuard())
     @HttpCode(201)
     async create(@Body() user: CreateUserDto): Promise<UserDto> {
         return this.userService
