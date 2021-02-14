@@ -1,35 +1,35 @@
 version: '3.7'
 
 services:
-  testjs_backend:
+  js_store_backend:
     build: ./
-    container_name: testjs_backend
+    container_name: js_store_backend
     ports:
       - 4040:4040
     environment:
-      - CONFIG_DATABASE_HOST=testjs_database
+      - CONFIG_DATABASE_HOST=js_store_backend
       - CONFIG_DATABASE_PORT=5432
-      - CONFIG_DATABASE_DATABASE=testjs
-      - CONFIG_DATABASE_USERNAME=testjs
-      - CONFIG_DATABASE_PASSWORD=testjs
+      - CONFIG_DATABASE_DATABASE=js_store
+      - CONFIG_DATABASE_USERNAME=js_store
+      - CONFIG_DATABASE_PASSWORD=js_store
     depends_on:
-      - testjs_database
+      - js_store_database
     links:
-      - testjs_database
+      - js_store_database
     restart: 'no'
 
-  testjs_database:
+  js_store_database:
     image: postgres:12.3
-    container_name: testjs_database
+    container_name: js_store_database
     ports:
       - 4041:5432
     environment:
-      - POSTGRES_DB=testjs
-      - POSTGRES_USER=testjs
-      - POSTGRES_PASSWORD=testjs
+      - POSTGRES_DB=js_store
+      - POSTGRES_USER=js_store
+      - POSTGRES_PASSWORD=js_store
     volumes:
-      - postgres-testjs:/var/lib/postgresql/data
+      - postgres-js_store:/var/lib/postgresql/data
     restart: 'no'
 
 volumes:
-  postgres-testjs:
+  postgres-js_store:

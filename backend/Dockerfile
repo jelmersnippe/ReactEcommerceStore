@@ -1,7 +1,7 @@
 FROM node:14.15.4-buster
 
-COPY ./ /opt/testjs
+COPY ./ /opt/js_store
 
-WORKDIR /opt/testjs
+WORKDIR /opt/js_store
 
 CMD ["npm", "run", "start:prod"]
