@@ -1,4 +1,4 @@
-import "./footer.scss";
+import './footer.scss';
 import {FunctionComponent} from 'react';
 
 const Footer: FunctionComponent = () => {
@@ -52,6 +52,6 @@ const Footer: FunctionComponent = () => {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

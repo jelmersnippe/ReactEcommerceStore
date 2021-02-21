@@ -1,17 +1,16 @@
-import "./category_page.scss";
+import './category_page.scss';
 
-import {FunctionComponent} from 'react';
+import React, {FunctionComponent} from 'react';
 import Toolbar from '../Toolbar';
 import ProductItem from '../ProductItem';
-import React from "react";
 
 const product1 = {
-    imageUrl: "shoes.jpg",
-    name: "HP Laptop 14s-dq1730nd - Laptop - 14 Inch",
-    sku: "SKU",
+    imageUrl: 'shoes.jpg',
+    name: 'HP Laptop 14s-dq1730nd - Laptop - 14 Inch',
+    sku: 'SKU',
     price: 569,
     stock_status: 1,
-    stock_qty: 10,
+    stock_qty: 10
 };
 
 const CategoryPage: FunctionComponent = () => {
@@ -23,15 +22,15 @@ const CategoryPage: FunctionComponent = () => {
     //      - X per pagina
     return (
         <>
-            <Toolbar pages={5} currentPage={1} />
+            <Toolbar pages={5} currentPage={1}/>
             <div className="product-items grid">
-                <ProductItem product={product1} />
-                <ProductItem product={product1} />
-                <ProductItem product={product1} />
-                <ProductItem product={product1} />
+                <ProductItem product={product1}/>
+                <ProductItem product={product1}/>
+                <ProductItem product={product1}/>
+                <ProductItem product={product1}/>
             </div>
         </>
     );
-}
+};
 
 export default CategoryPage;

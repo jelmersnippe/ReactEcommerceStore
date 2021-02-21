@@ -7,7 +7,7 @@ import {AuthenticatedDto} from '../auth/out/AuthenticatedDto';
 @ApiTags('app')
 @Controller('app')
 export class AppController {
-    constructor (
+    constructor(
         @Inject(AuthService) private readonly authService: AuthService
     ) {
 
@@ -17,6 +17,6 @@ export class AppController {
     async login(@Body() login: LoginDto): Promise<AuthenticatedDto> {
         return this.authService
             .login(login.email.toLowerCase(), login.password)
-            .then((result: {userId: string, accessToken: string}) => new AuthenticatedDto(result.userId, result.accessToken))
+            .then((result: { userId: string, accessToken: string }) => new AuthenticatedDto(result.userId, result.accessToken));
     }
 }

@@ -25,7 +25,7 @@ import {CategoryModule} from '../entities/category/CategoryModule';
                 port: configService.get<number>('CONFIG_DATABASE_PORT'),
                 username: configService.get<string>('CONFIG_DATABASE_USERNAME'),
                 password: configService.get<string>('CONFIG_DATABASE_PASSWORD'),
-                database:  configService.get<string>('CONFIG_DATABASE_DATABASE'),
+                database: configService.get<string>('CONFIG_DATABASE_DATABASE'),
                 entities: [
                     'dist/entities/**/*Entity{.ts,.js}',
                     'dist/junctionEntities/**/*JunctionEntity{.ts,.js}'

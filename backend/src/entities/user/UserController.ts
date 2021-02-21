@@ -3,10 +3,12 @@ import {CreateUserDto} from './in/CreateUserDto';
 import {UserService} from './UserService';
 import {UserEntity} from './UserEntity';
 import {
-    ApiBearerAuth, ApiConflictResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
     ApiInternalServerErrorResponse,
     ApiNotFoundResponse,
-    ApiOkResponse, ApiTags,
+    ApiOkResponse,
+    ApiTags,
     ApiUnauthorizedResponse
 } from '@nestjs/swagger';
 import {UserDto} from './out/UserDto';
@@ -18,7 +20,7 @@ import {UpdateUserDto} from './in/UpdateUserDto';
 export class UserController {
 
     constructor(
-        @Inject(UserService) private readonly userService: UserService,
+        @Inject(UserService) private readonly userService: UserService
     ) {
 
     }
@@ -37,7 +39,7 @@ export class UserController {
     ): Promise<UserDto> {
         return this.userService
             .update(id, newUserData)
-            .then((user: UserEntity) => new UserDto(user))
+            .then((user: UserEntity) => new UserDto(user));
     }
 
     @ApiOkResponse({description: '', type: UserDto})

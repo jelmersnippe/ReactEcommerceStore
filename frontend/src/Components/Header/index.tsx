@@ -1,12 +1,12 @@
 import React, {FunctionComponent, useState} from 'react';
-import UspBar from "./UspBar/UspBar";
-import NavBar from "./Navbar/NavBar";
-import PersonIcon from "@material-ui/icons/Person";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { Link } from "react-router-dom";
-import MenuIcon from "@material-ui/icons/Menu";
+import UspBar from './UspBar/UspBar';
+import NavBar from './Navbar/NavBar';
+import PersonIcon from '@material-ui/icons/Person';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {Link} from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
 
-import "./header.scss";
+import './header.scss';
 import SearchBar from '../SearchBar';
 
 const Header: FunctionComponent = () => {
@@ -14,7 +14,7 @@ const Header: FunctionComponent = () => {
 
     return (
         <header>
-            <UspBar />
+            <UspBar/>
 
             <div className="layout-wrapper header">
                 <div className="layout-container">
@@ -23,22 +23,22 @@ const Header: FunctionComponent = () => {
                             onClick={() => setNavbarOpened(true)}
                             className="action icon-link open-mobile-nav"
                         >
-                            <MenuIcon className="icon" />
+                            <MenuIcon className="icon"/>
                         </button>
                         <Link to="/">
                             <img
                                 className="logo"
-                                src={process.env.PUBLIC_URL + "/snipshop.png"}
+                                src={process.env.PUBLIC_URL + '/snipshop.png'}
                                 alt=""
                             />
                         </Link>
-                        <SearchBar />
+                        <SearchBar/>
                         <div className="header-links">
                             <button className="action icon-link to-account">
-                                <PersonIcon className="icon account" />
+                                <PersonIcon className="icon account"/>
                             </button>
                             <button className="action icon-link to-cart">
-                                <ShoppingCartIcon className="icon cart" />
+                                <ShoppingCartIcon className="icon cart"/>
                             </button>
                         </div>
                     </div>
@@ -53,6 +53,6 @@ const Header: FunctionComponent = () => {
             />
         </header>
     );
-}
+};
 
 export default Header;

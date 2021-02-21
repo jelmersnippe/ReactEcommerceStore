@@ -4,8 +4,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import Props from './props';
 import './product_item.scss';
-import {FunctionComponent} from 'react';
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 
 const ProductItem: FunctionComponent<Props> = ({product: {imageUrl, name, sku, price, stock_status}}) => {
     return (
@@ -43,6 +42,6 @@ const ProductItem: FunctionComponent<Props> = ({product: {imageUrl, name, sku, p
             </div>
         </div>
     );
-}
+};
 
 export default ProductItem;

@@ -1,7 +1,7 @@
 import {ConflictException, Injectable, NotFoundException} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { UserEntity } from './UserEntity';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+import {UserEntity} from './UserEntity';
 import {CreateUserDto} from './in/CreateUserDto';
 import * as bcrypt from 'bcrypt';
 import {UpdateUserDto} from './in/UpdateUserDto';
@@ -10,7 +10,7 @@ import {UpdateUserDto} from './in/UpdateUserDto';
 export class UserService {
 
     constructor(
-        @InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>,
+        @InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>
     ) {
 
     }
@@ -32,7 +32,7 @@ export class UserService {
             throw new ConflictException(`User with email ${user.email} already exists`);
         }
 
-        const hashedPassword = await bcrypt.hash(user.password, 1)
+        const hashedPassword = await bcrypt.hash(user.password, 1);
         const newUser = new UserEntity({
             ...user,
             password: hashedPassword

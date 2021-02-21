@@ -1,6 +1,6 @@
-import "./searchbar.scss";
+import './searchbar.scss';
 
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from '@material-ui/icons/Search';
 import {FunctionComponent} from 'react';
 
 const SearchBar: FunctionComponent = () => {
@@ -8,10 +8,10 @@ const SearchBar: FunctionComponent = () => {
         <div className="searchbar">
             <input id="search-input" placeholder="Search the entire store..."/>
             <button className="action icon-link search">
-                <SearchIcon className="icon" />
+                <SearchIcon className="icon"/>
             </button>
         </div>
     );
-}
+};
 
 export default SearchBar;

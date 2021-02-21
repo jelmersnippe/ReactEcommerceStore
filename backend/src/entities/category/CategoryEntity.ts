@@ -27,7 +27,7 @@ export class CategoryEntity {
     categories: CategoryEntity[];
 
     @ManyToOne(() => CategoryEntity, (category: CategoryEntity) => category.categories)
-    @JoinColumn({name: 'category', referencedColumnName: 'parent_category_id'})
+    @JoinColumn({name: 'category', referencedColumnName: 'parentCategoryId'})
     parentCategory: CategoryEntity;
 
     @ManyToMany(() => ProductEntity, (product: ProductEntity) => product.categories)
