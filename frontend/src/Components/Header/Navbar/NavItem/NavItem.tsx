@@ -5,7 +5,15 @@ import Props from './props';
 const NavItem: FunctionComponent<Props> = ({item, level}) => {
     return (
         <li className={`nav-item level${level}`}>
-            <NavLink to={`/${item.slug}`} activeClassName="active">
+            <NavLink
+                to={{
+                    pathname: `/category/${item.slug}`,
+                    state: {
+                        id: item.id
+                    }
+                }}
+                activeClassName="active"
+            >
                 <span>{item.title}</span>
             </NavLink>
             {item.categories && (

@@ -1,14 +1,14 @@
-import {Controller, Get, HttpCode, Inject} from '@nestjs/common';
+import {Controller, Get, HttpCode, Inject, Param, ParseUUIDPipe} from '@nestjs/common';
 import {CategoryService} from './CategoryService';
 import {
-    ApiConflictResponse,
-    ApiInternalServerErrorResponse,
+    ApiInternalServerErrorResponse, ApiNotFoundResponse,
     ApiOkResponse,
-    ApiTags,
-    ApiUnauthorizedResponse
+    ApiTags
 } from '@nestjs/swagger';
 import {CategoryEntity} from './CategoryEntity';
 import {CategoryDTO} from './dto/out/CategoryDTO';
+import {ProductEntity} from '../product/ProductEntity';
+import {ProductDTO} from '../product/dto/out/ProductDTO';
 
 @ApiTags('category')
 @Controller('category')
@@ -21,14 +21,23 @@ export class CategoryController {
     }
 
     @ApiOkResponse({description: '', type: [CategoryDTO]})
-    @ApiUnauthorizedResponse()
-    @ApiConflictResponse()
     @ApiInternalServerErrorResponse()
     @Get('/')
-    @HttpCode(201)
+    @HttpCode(200)
     async find(): Promise<CategoryDTO[]> {
         return this.categoryService
             .find()
             .then((categories: CategoryEntity[]) => categories.map((category: CategoryEntity) => new CategoryDTO(category)));
+    }
+
+    @ApiOkResponse({description: '', type: [ProductDTO]})
+    @ApiNotFoundResponse()
+    @ApiInternalServerErrorResponse()
+    @Get('/:id/product')
+    @HttpCode(200)
+    async findProducts(@Param('id', ParseUUIDPipe) id: string,): Promise<ProductDTO[]> {
+        return this.categoryService
+            .findProducts(id)
+            .then((products: ProductEntity[]) => products.map((product: ProductEntity) => new ProductDTO(product)));
     }
 }

@@ -6,35 +6,40 @@ import Props from './props';
 import './product_item.scss';
 import React, {FunctionComponent} from 'react';
 
-const ProductItem: FunctionComponent<Props> = ({product: {imageUrl, name, sku, price, stock_status}}) => {
+const ProductItem: FunctionComponent<Props> = ({product}) => {
     return (
         <div className="product-item">
             <div className="product-media">
-                <img src={process.env.PUBLIC_URL + '/' + imageUrl} alt=""/>
+                <img src={process.env.PUBLIC_URL + '/' + product.image} alt=""/>
             </div>
             <div className="product-info">
                 <div className="product-details">
-                    <span className="name">{name}</span>
-                    <span className="sku">{sku}</span>
+                    <span className="name">{product.name}</span>
+                    <span className="sku">{product.sku}</span>
                 </div>
                 <div className="product-pricing">
           <span className="price">
             <EuroSymbolIcon className="icon" fontSize="small"/>
-              {price.toString()}
+              {product.price.toString()}
           </span>
                 </div>
                 <div className="product-stock">
-                    {stock_status ? (
-                        <span className="available">
-              <CheckIcon className="icon"/>
-              In stock
-            </span>
-                    ) : (
-                        <span className="unavailable">Out of stock</span>
-                    )}
+                    {product.stock > 0 ?
+                        (
+                            <span className="available">
+                            <CheckIcon className="icon"/>
+                            In stock
+                        </span>
+                        ) : (
+                            <span className="unavailable">Out of stock</span>
+                        )
+                    }
                 </div>
                 <div className="product-actions">
-                    <button className="action to-cart">In winkelwagen</button>
+                    {
+                        product.stock > 0 &&
+                        <button className="action to-cart">In winkelwagen</button>
+                    }
                     <button className="action icon-link to-wishlist">
                         <FavoriteBorderIcon className="icon"/>
                     </button>

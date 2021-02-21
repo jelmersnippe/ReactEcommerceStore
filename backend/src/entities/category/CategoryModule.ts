@@ -4,12 +4,14 @@ import {PassportModule} from '@nestjs/passport';
 import {CategoryEntity} from './CategoryEntity';
 import {CategoryService} from './CategoryService';
 import {CategoryController} from './CategoryController';
+import {ProductEntity} from '../product/ProductEntity';
 
 @Module({
     imports: [
         PassportModule.register({defaultStrategy: 'jwt'}),
         TypeOrmModule.forFeature([
-            CategoryEntity
+            CategoryEntity,
+            ProductEntity
         ])
     ],
     providers: [

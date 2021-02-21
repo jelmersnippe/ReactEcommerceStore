@@ -28,9 +28,8 @@ export class UserController {
     @ApiBearerAuth()
     @ApiOkResponse({description: '', type: UserDto})
     @ApiUnauthorizedResponse()
-    @ApiConflictResponse()
     @ApiInternalServerErrorResponse()
-    @Patch(':id')
+    @Patch('/:id')
     @UseGuards(AuthGuard())
     @HttpCode(200)
     async update(
@@ -46,7 +45,7 @@ export class UserController {
     @ApiUnauthorizedResponse()
     @ApiConflictResponse()
     @ApiInternalServerErrorResponse()
-    @Post()
+    @Post('/')
     @HttpCode(201)
     async create(@Body() user: CreateUserDto): Promise<UserDto> {
         return this.userService
@@ -57,8 +56,9 @@ export class UserController {
     @ApiBearerAuth()
     @ApiOkResponse({description: '', type: UserDto})
     @ApiUnauthorizedResponse()
+    @ApiNotFoundResponse()
     @ApiInternalServerErrorResponse()
-    @Get(':id')
+    @Get('/:id')
     @UseGuards(AuthGuard())
     @HttpCode(200)
     async findOne(@Param('id', ParseUUIDPipe) id: string): Promise<UserDto> {
@@ -70,9 +70,8 @@ export class UserController {
     @ApiBearerAuth()
     @ApiOkResponse({description: '', type: [UserDto]})
     @ApiUnauthorizedResponse()
-    @ApiNotFoundResponse()
     @ApiInternalServerErrorResponse()
-    @Get()
+    @Get('/')
     @UseGuards(AuthGuard())
     @HttpCode(200)
     async findAll(): Promise<Array<UserDto>> {
@@ -86,7 +85,7 @@ export class UserController {
     @ApiUnauthorizedResponse()
     @ApiNotFoundResponse()
     @ApiInternalServerErrorResponse()
-    @Delete(':id')
+    @Delete('/:id')
     @UseGuards(AuthGuard())
     @HttpCode(200)
     async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
