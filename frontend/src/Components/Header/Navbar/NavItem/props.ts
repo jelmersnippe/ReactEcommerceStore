@@ -1,10 +1,6 @@
-export default interface Props {
-    item: NavItem;
-    level: number;
-}
+import {CategoryDTO} from '../../../../generated';
 
-interface NavItem {
-    title: string;
-    slug: string;
-    children?: Array<NavItem>;
+export default interface Props {
+    item: CategoryDTO;
+    level: number;
 }

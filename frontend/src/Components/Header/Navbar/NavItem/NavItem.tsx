@@ -8,9 +8,9 @@ const NavItem: FunctionComponent<Props> = ({item, level}) => {
             <NavLink to={`/${item.slug}`} activeClassName="active">
                 <span>{item.title}</span>
             </NavLink>
-            {item.children && (
+            {item.categories && (
                 <ul className={`submenu level${level + 1}`}>
-                    {item.children.map((item) => (
+                    {item.categories.map((item) => (
                         <NavItem item={item} level={level + 1} key={item.slug}/>
                     ))}
                 </ul>
