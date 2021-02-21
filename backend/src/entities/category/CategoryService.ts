@@ -13,7 +13,7 @@ export class CategoryService {
     }
 
     async find(): Promise<CategoryEntity[]> {
-        const relations: string[] = ['categories'];
+        const relations: string[] = ['categories', 'categories.categories'];
 
         return await this.categoryRepository.find({where: {active: true, parentCategory: null}, relations: relations});
     }

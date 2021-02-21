@@ -1,4 +1,4 @@
-import {ApiProperty} from '@nestjs/swagger';
+import {ApiProperty, ApiPropertyOptional} from '@nestjs/swagger';
 import {CategoryEntity} from '../../CategoryEntity';
 
 export class CategoryDTO {
@@ -11,8 +11,8 @@ export class CategoryDTO {
     @ApiProperty({type: 'string'})
     slug: string;
 
-    @ApiProperty({type: [CategoryDTO]})
-    categories: CategoryDTO[];
+    @ApiPropertyOptional({type: [CategoryDTO]})
+    categories: CategoryDTO[] | undefined;
 
     constructor(
         category: CategoryEntity
