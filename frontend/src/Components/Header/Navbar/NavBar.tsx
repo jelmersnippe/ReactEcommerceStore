@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import NavItem from "./NavItem";
+import React, {useState, useEffect, FunctionComponent} from 'react';
+import NavItem from "./NavItem/NavItem";
 import CloseIcon from "@material-ui/icons/Close";
 
 import "./navbar.scss";
+import Props from './props';
 
 const navItems = [
   {
@@ -142,15 +143,15 @@ const navItems = [
   },
 ];
 
-function NavBar({ active, onMenuClose }: {active: boolean, onMenuClose: () => void}) {
-  const [navbarOpenend, SetNavbarOpened] = useState<boolean>(false);
+const NavBar: FunctionComponent<Props> = ({ active, onMenuClose }) => {
+  const [navbarOpened, SetNavbarOpened] = useState<boolean>(false);
 
   useEffect(() => {
     SetNavbarOpened(active);
   }, [active]);
 
   return (
-    <div className={`layout-wrapper navbar ${navbarOpenend ? "active" : ""}`}>
+    <div className={`layout-wrapper navbar ${navbarOpened ? "active" : ""}`}>
       <div className="layout-container">
         <ul className="nav-sections">
           {navItems.map((item) => (

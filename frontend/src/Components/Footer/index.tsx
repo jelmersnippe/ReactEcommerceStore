@@ -1,6 +1,7 @@
 import "./footer.scss";
+import {FunctionComponent} from 'react';
 
-function Footer() {
+const Footer: FunctionComponent = () => {
     return (
         <footer>
             {/*

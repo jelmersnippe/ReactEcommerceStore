@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from 'react';
 import ViewListIcon from "@material-ui/icons/ViewList";
 import AppsIcon from "@material-ui/icons/Apps";
 
@@ -6,8 +6,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import "./toolbar.scss";
+import Props from './props';
 
-function Toolbar({ pages, currentPage }: {pages: number, currentPage: number}) {
+const Toolbar: FunctionComponent<Props> = ({ pages, currentPage }) => {
+
     const pagesHtml = (pages: number, currentPage: number) => {
         let html = [];
         for (let index = 1; index <= pages; index++) {

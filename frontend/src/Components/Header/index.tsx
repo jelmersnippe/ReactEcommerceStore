@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import UspBar from "./UspBar";
-import NavBar from "./NavBar";
+import React, {FunctionComponent, useState} from 'react';
+import UspBar from "./UspBar/UspBar";
+import NavBar from "./Navbar/NavBar";
 import PersonIcon from "@material-ui/icons/Person";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import "./header.scss";
 import SearchBar from '../SearchBar';
 
-function Header() {
+const Header: FunctionComponent = () => {
     const [navbarOpened, setNavbarOpened] = useState(false);
 
     return (

@@ -1,8 +1,9 @@
 import "./searchbar.scss";
 
 import SearchIcon from "@material-ui/icons/Search";
+import {FunctionComponent} from 'react';
 
-function SearchBar() {
+const SearchBar: FunctionComponent = () => {
     return (
         <div className="searchbar">
             <input id="search-input" placeholder="Search the entire store..."/>

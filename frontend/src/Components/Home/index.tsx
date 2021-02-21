@@ -1,6 +1,7 @@
 import "./home.scss";
+import {FunctionComponent} from 'react';
 
-function Home() {
+const Home: FunctionComponent = () => {
     return <h2>Home</h2>;
 }
 

@@ -1,6 +1,6 @@
 import "./category_page.scss";
 
-import {ReactElement} from 'react';
+import {FunctionComponent} from 'react';
 import Toolbar from '../Toolbar';
 import ProductItem from '../ProductItem';
 import React from "react";
@@ -14,7 +14,7 @@ const product1 = {
     stock_qty: 10,
 };
 
-function CategoryPage(): ReactElement {
+const CategoryPage: FunctionComponent = () => {
     // Toolbar Top:
     //      - Grid/ListView
     //      - Sorteer op
