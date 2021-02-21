@@ -20,6 +20,6 @@ export class CategoryDTO {
         this.id = category.id;
         this.title = category.title;
         this.slug = category.slug;
-        this.categories = category.categories.map((category: CategoryEntity) => new CategoryDTO(category));
+        this.categories = category.categories?.map((category: CategoryEntity) => new CategoryDTO(category));
     }
 }

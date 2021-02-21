@@ -15,6 +15,6 @@ export class CategoryService {
     async find(): Promise<CategoryEntity[]> {
         const relations: string[] = ['categories'];
 
-        return await this.categoryRepository.find({where: {active: true}, relations: relations});
+        return await this.categoryRepository.find({where: {active: true, parentCategory: null}, relations: relations});
     }
 }

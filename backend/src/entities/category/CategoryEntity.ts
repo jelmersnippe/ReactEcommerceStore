@@ -6,10 +6,6 @@ export class CategoryEntity {
     @PrimaryGeneratedColumn('uuid', {name: 'id'})
     id: string;
 
-    @Index()
-    @Column({name: 'parent_category_id', type: 'uuid', nullable: true})
-    parentCategoryId: string;
-
     @Column({name: 'title', unique: true, type: 'varchar'})
     title: string;
 
@@ -27,7 +23,7 @@ export class CategoryEntity {
     categories: CategoryEntity[];
 
     @ManyToOne(() => CategoryEntity, (category: CategoryEntity) => category.categories)
-    @JoinColumn({name: 'category', referencedColumnName: 'parentCategoryId'})
+    @JoinColumn({name: 'parent_category_id'})
     parentCategory: CategoryEntity;
 
     @ManyToMany(() => ProductEntity, (product: ProductEntity) => product.categories)
