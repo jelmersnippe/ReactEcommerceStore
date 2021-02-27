@@ -5,7 +5,6 @@ const initialState: CartState = {
 };
 
 const cartReducer = (state = initialState, action: CartActionTypes): CartState => {
-    console.log(state);
     switch (action.type) {
         case CartAction.UPDATE_QTY:
             const itemToUpdate = state.items.find((item) => item.id === action.payload.id);

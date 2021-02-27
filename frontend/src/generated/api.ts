@@ -24,6 +24,31 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface AuthenticatedDTO
+ */
+export interface AuthenticatedDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticatedDTO
+     */
+    userId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticatedDTO
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticatedDTO
+     */
+    accessToken: string;
+}
+/**
+ * 
+ * @export
  * @interface CategoryDTO
  */
 export interface CategoryDTO {
@@ -259,7 +284,7 @@ export const AppApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async login(loginDto: LoginDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async login(loginDto: LoginDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticatedDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.login(loginDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -279,7 +304,7 @@ export const AppApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        login(loginDto: LoginDto, options?: any): AxiosPromise<void> {
+        login(loginDto: LoginDto, options?: any): AxiosPromise<AuthenticatedDTO> {
             return localVarFp.login(loginDto, options).then((request) => request(axios, basePath));
         },
     };

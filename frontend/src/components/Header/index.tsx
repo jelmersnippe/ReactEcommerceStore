@@ -2,6 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 import UspBar from './UspBar/UspBar';
 import NavBar from './Navbar/NavBar';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PersonIcon from '@material-ui/icons/Person';
 import {Link} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -32,6 +33,14 @@ const Header: FunctionComponent = () => {
                         </Link>
                         {/*<SearchBar/>*/}
                         <div className="header-links">
+                            <Link
+                                className="action icon-link to-account"
+                                to={{
+                                    pathname: '/account'
+                                }}
+                            >
+                                <PersonIcon className="icon account"/>
+                            </Link>
                             <Link
                                 className="action icon-link to-cart"
                                 to={{

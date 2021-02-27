@@ -8,6 +8,7 @@ import CategoryPage from './screens/CategoryPage';
 import ProductPage from './screens/ProductPage';
 import React from 'react';
 import Cart from './screens/Cart';
+import Account from './screens/Account';
 
 function App() {
     return (
@@ -17,18 +18,11 @@ function App() {
                 <div className="layout-wrapper">
                     <div className="layout-container">
                         <Switch>
-                            <Route exact path="/">
-                                <Home/>
-                            </Route>
-                            <Route path="/category/:slug">
-                                <CategoryPage/>
-                            </Route>
-                            <Route path="/product/:sku">
-                                <ProductPage/>
-                            </Route>
-                            <Route path="/cart">
-                                <Cart/>
-                            </Route>
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/category/:slug" component={CategoryPage}/>
+                            <Route path="/product/:sku" component={ProductPage}/>
+                            <Route path="/cart" component={Cart}/>
+                            <Route path="/account" component={Account}/>
                             <Route path="*">
                                 <h2>404</h2>
                             </Route>
