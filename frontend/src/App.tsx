@@ -7,6 +7,7 @@ import Home from './screens/Home';
 import CategoryPage from './screens/CategoryPage';
 import ProductPage from './screens/ProductPage';
 import React from 'react';
+import Cart from './screens/Cart';
 
 function App() {
     return (
@@ -24,6 +25,9 @@ function App() {
                             </Route>
                             <Route path="/product/:sku">
                                 <ProductPage/>
+                            </Route>
+                            <Route path="/cart">
+                                <Cart/>
                             </Route>
                             <Route path="*">
                                 <h2>404</h2>

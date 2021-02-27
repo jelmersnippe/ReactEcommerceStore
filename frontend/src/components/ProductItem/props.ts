@@ -1,4 +1,4 @@
-import {ProductDTO} from '../../../../backend/dist/entities/product/dto/out/ProductDTO';
+import {ProductDTO} from '../../generated';
 
 export default interface Props {
     product: ProductDTO;

@@ -5,12 +5,15 @@ import {ProductDTO} from '../../generated';
 import QtyInput from '../../components/QtyInput';
 import CheckIcon from '@material-ui/icons/Check';
 import PriceDisplay from '../../components/PriceDisplay';
+import {useDispatch} from 'react-redux';
+import {addItemToCart} from '../../reducers/cart/actions';
 
 type LocationState = { product: ProductDTO };
 
 const ProductPage: FunctionComponent = () => {
     const {state} = useLocation<LocationState>();
     const [qty, setQty] = useState<number>(0);
+    const dispatch = useDispatch();
 
     return (
         <div className="wrapper">
@@ -35,7 +38,17 @@ const ProductPage: FunctionComponent = () => {
                             </span>
                             <div className="to-cart-container">
                                 <QtyInput value={qty} max={state.product.stock} setValue={setQty}/>
-                                <button className="action to-cart" onClick={() => setQty(0)}>In winkelwagen</button>
+                                <button
+                                    className="action to-cart"
+                                    onClick={() => {
+                                        if (qty > 0) {
+                                            dispatch(addItemToCart(state.product, qty));
+                                            setQty(0);
+                                        }
+                                    }}
+                                >
+                                    In winkelwagen
+                                </button>
                             </div>
                         </div>
                         : <span className="stock unavailable">Out of stock</span>

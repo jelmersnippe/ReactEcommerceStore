@@ -3,6 +3,9 @@ import {ProductEntity} from '../../ProductEntity';
 
 export class ProductDTO {
     @ApiProperty({type: 'string'})
+    id: string;
+
+    @ApiProperty({type: 'string'})
     name: string;
 
     @ApiProperty({type: 'string'})
@@ -20,6 +23,7 @@ export class ProductDTO {
     constructor(
         product: ProductEntity
     ) {
+        this.id = product.id;
         this.name = product.name;
         this.sku = product.sku;
         this.image = product.image;

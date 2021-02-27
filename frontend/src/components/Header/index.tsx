@@ -32,9 +32,14 @@ const Header: FunctionComponent = () => {
                         </Link>
                         {/*<SearchBar/>*/}
                         <div className="header-links">
-                            <button className="action icon-link to-cart">
+                            <Link
+                                className="action icon-link to-cart"
+                                to={{
+                                    pathname: '/cart'
+                                }}
+                            >
                                 <ShoppingCartIcon className="icon cart"/>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

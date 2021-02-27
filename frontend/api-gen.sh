@@ -24,7 +24,7 @@ if [ -z "$outputFile" ]; then
     exit 1
 fi
 
-generatedPath="./generated"
+generatedPath="./src/generated"
 
 mkdir -p $generatedPath
 
