@@ -1,10 +1,10 @@
-import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
 import CheckIcon from '@material-ui/icons/Check';
 
 import Props from './props';
 import './product_item.scss';
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
+import PriceDisplay from '../PriceDisplay';
 
 const ProductItem: FunctionComponent<Props> = ({product}) => {
     return (
@@ -25,12 +25,7 @@ const ProductItem: FunctionComponent<Props> = ({product}) => {
                     <span className="name">{product.name}</span>
                     <span className="sku">{product.sku}</span>
                 </div>
-                <div className="product-pricing">
-                    <span className="price">
-                        <EuroSymbolIcon className="icon" fontSize="small"/>
-                        {product.price.toString()}
-                    </span>
-                </div>
+                <PriceDisplay price={product.price}/>
                 <div className="product-stock">
                     {product.stock > 0 ?
                         (

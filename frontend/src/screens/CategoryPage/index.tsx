@@ -3,23 +3,20 @@ import './category_page.scss';
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import Toolbar from '../../components/Toolbar';
 import ProductItem from '../../components/ProductItem';
-import {useLocation, useParams} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import api from '../../config/api';
-import {ProductDTO} from '../../generated';
+import {CategoryDTO, ProductDTO} from '../../generated';
 
-type RouteParams = { slug: string };
-type LocationState = { id: string };
+type LocationState = { category: CategoryDTO };
 
 const CategoryPage: FunctionComponent = () => {
-    const {slug} = useParams<RouteParams>();
-    console.log(slug);
     const {state} = useLocation<LocationState>();
 
     const [products, setProducts] = useState<Array<ProductDTO>>([]);
 
     useEffect(() => {
         (async () => {
-            const response = await api.category.findProducts(state.id);
+            const response = await api.category.findProducts(state.category.id);
             setProducts(response.data);
         })();
     }, [state]);
@@ -33,12 +30,13 @@ const CategoryPage: FunctionComponent = () => {
     return (
         <>
             <Toolbar pages={5} currentPage={1}/>
+            <h2>{state.category.title}</h2>
             {
                 products.length > 0 &&
                 <div className="product-items grid">
                     {
                         products.map((product: ProductDTO) => {
-                            return <ProductItem product={product} key={product.sku}/>
+                            return <ProductItem product={product} key={product.sku}/>;
                         })
                     }
                 </div>

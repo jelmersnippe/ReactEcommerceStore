@@ -7,7 +7,7 @@ const QtyInput: FunctionComponent<Props> = ({value, max, setValue}) => {
         <div className="qty-input">
             <input type={'number'} min={0} max={max} id={'qty'} value={value} onChange={(event) => setValue(parseInt(event.target.value))}/>
         </div>
-    )
-}
+    );
+};
 
 export default QtyInput;

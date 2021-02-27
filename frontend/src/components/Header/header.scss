@@ -1,81 +1,81 @@
 @keyframes growDown {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
 }
 
 .header {
-  border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .usp-bar {
-  border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .usp-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 0;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
 }
 
 .usp-item {
-  display: flex;
-  padding: 0 8px;
-  justify-content: center;
-  text-align: center;
+    display: flex;
+    padding: 0 8px;
+    justify-content: center;
+    text-align: center;
 
-  .usp-icon {
-    margin-right: 8px;
-  }
+    .usp-icon {
+        margin-right: 8px;
+    }
 }
 
 .header-content {
-  display: flex;
-  align-items: center;
-
-  @media (min-width: 768px) {
-    padding: 16px 0;
-  }
-
-  .logo {
-    display: none;
+    display: flex;
+    align-items: center;
 
     @media (min-width: 768px) {
-      display: block;
-      height: 60px;
+        padding: 16px 0;
     }
-  }
 
-  @media (min-width: 768px) {
-    .searchbar {
-      margin: 0 10%;
+    .logo {
+        display: none;
+
+        @media (min-width: 768px) {
+            display: block;
+            height: 60px;
+        }
     }
-  }
 
-  @media (min-width: 768px) {
-    .open-mobile-nav {
-      display: none;
+    @media (min-width: 768px) {
+        .searchbar {
+            margin: 0 10%;
+        }
     }
-  }
 
-  .header-links {
-    display: flex;
-    margin-left: auto;
-
-    .icon-link:not(:last-child) {
-      margin-right: 8px;
-
-      @media (min-width: 768px) {
-        margin-right: 16px;
-      }
+    @media (min-width: 768px) {
+        .open-mobile-nav {
+            display: none;
+        }
     }
-  }
+
+    .header-links {
+        display: flex;
+        margin-left: auto;
+
+        .icon-link:not(:last-child) {
+            margin-right: 8px;
+
+            @media (min-width: 768px) {
+                margin-right: 16px;
+            }
+        }
+    }
 }

@@ -6,8 +6,7 @@
 }
 
 .product-item {
-    width: 50%;
-    padding: 8px;
+    width: calc(50% - 8px);
     box-sizing: border-box;
     margin: 8px 0;
     border-bottom: 1px solid #ccc;
@@ -15,10 +14,10 @@
     color: black;
 
     @media (min-width: 768px) {
-        width: 33%;
+        width: calc(33% - 8px);
     }
     @media (min-width: 1024px) {
-        width: 25%;
+        width: calc(25% - 8px);
     }
 
     .product-media {
@@ -46,16 +45,6 @@
 
         .sku {
             color: #bbb;
-        }
-    }
-
-    .product-pricing {
-        font-weight: 700;
-        font-size: 18px;
-
-        .price {
-            display: flex;
-            align-items: center;
         }
     }
 

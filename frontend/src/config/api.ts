@@ -1,10 +1,5 @@
 import globalAxios from 'axios';
-import {Configuration} from '../generated';
-import {
-	AppApi,
-	CategoryApi,
-	UserApi
-} from '../generated';
+import {AppApi, CategoryApi, Configuration, UserApi} from '../generated';
 
 globalAxios.interceptors.request.use((requestConfig) => {
     console.log('axios request', requestConfig);
@@ -21,24 +16,24 @@ const baseUrl = 'http://localhost:4040';
 class Api {
     apiConfig = new Configuration({basePath: baseUrl});
 
-    app = new AppApi(this.apiConfig)
-	category = new CategoryApi(this.apiConfig)
-	user = new UserApi(this.apiConfig)
+    app = new AppApi(this.apiConfig);
+    category = new CategoryApi(this.apiConfig);
+    user = new UserApi(this.apiConfig);
 
     setBearerAccessToken(accessToken: string) {
-        this.apiConfig = new Configuration({basePath: baseUrl, accessToken: accessToken})
-        this.updateApiInstances()
+        this.apiConfig = new Configuration({basePath: baseUrl, accessToken: accessToken});
+        this.updateApiInstances();
     }
 
     removeAccessToken() {
-        this.apiConfig = new Configuration({basePath: baseUrl})
-        this.updateApiInstances()
+        this.apiConfig = new Configuration({basePath: baseUrl});
+        this.updateApiInstances();
     }
 
     updateApiInstances() {
-        this.app = new AppApi(this.apiConfig)
-		this.category = new CategoryApi(this.apiConfig)
-		this.user = new UserApi(this.apiConfig)
+        this.app = new AppApi(this.apiConfig);
+        this.category = new CategoryApi(this.apiConfig);
+        this.user = new UserApi(this.apiConfig);
 
     }
 }

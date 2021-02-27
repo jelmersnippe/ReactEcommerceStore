@@ -1,40 +1,40 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 $layout_max-width: 1200px;
 
 .app-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .layout-container {
-  width: 100%;
-  max-width: $layout_max-width;
-  margin: auto;
-  padding: 0 20px;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: $layout_max-width;
+    margin: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 header,
 main,
 footer {
-  width: 100%;
+    width: 100%;
 }
 
 .main-content {
-  flex: 1;
+    flex: 1;
 }

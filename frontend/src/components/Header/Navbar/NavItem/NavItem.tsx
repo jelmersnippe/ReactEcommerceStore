@@ -9,14 +9,14 @@ const NavItem: FunctionComponent<Props> = ({item, level}) => {
                 to={{
                     pathname: `/category/${item.slug}`,
                     state: {
-                        id: item.id
+                        category: item
                     }
                 }}
                 activeClassName="active"
             >
                 <span>{item.title}</span>
             </NavLink>
-            {item.categories && (
+            {(item.categories && item.categories.length > 0) && (
                 <ul className={`submenu level${level + 1}`}>
                     {item.categories.map((item) => (
                         <NavItem item={item} level={level + 1} key={item.slug}/>

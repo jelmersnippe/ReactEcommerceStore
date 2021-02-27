@@ -20,7 +20,7 @@ const NavBar: FunctionComponent<Props> = ({active, onMenuClose}) => {
             const response = await api.category.find();
             setCategories(response.data);
         })();
-    }, [])
+    }, []);
 
     return (
         <div className={`layout-wrapper navbar ${navbarOpened ? 'active' : ''}`}>

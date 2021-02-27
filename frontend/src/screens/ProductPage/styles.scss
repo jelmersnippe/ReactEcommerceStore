@@ -54,12 +54,27 @@
     .icon {
         margin-right: 4px;
     }
+
+    &.available {
+        color: green;
+    }
+
+    &.unavailable {
+        color: red;
+    }
 }
 
-.available {
-    color: green;
-}
+.product-details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
 
-.unavailable {
-    color: red;
+    .name {
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+
+    .sku {
+        color: #bbb;
+    }
 }
