@@ -2,10 +2,10 @@ import {Route, Switch} from 'react-router-dom';
 
 import './reset.scss';
 import './buttons.scss';
-import Header from './Components/Header';
-import Home from './Components/Home';
-import CategoryPage from './Components/CategoryPage';
-import Footer from './Components/Footer';
+import Header from './components/Header';
+import Home from './screens/Home';
+import CategoryPage from './screens/CategoryPage';
+import ProductPage from './screens/ProductPage';
 import React from 'react';
 
 function App() {
@@ -22,6 +22,9 @@ function App() {
                             <Route path="/category/:slug">
                                 <CategoryPage/>
                             </Route>
+                            <Route path="/product/:sku">
+                                <ProductPage/>
+                            </Route>
                             <Route path="*">
                                 <h2>404</h2>
                             </Route>
@@ -29,7 +32,6 @@ function App() {
                     </div>
                 </div>
             </main>
-            <Footer/>
         </div>
     );
 }

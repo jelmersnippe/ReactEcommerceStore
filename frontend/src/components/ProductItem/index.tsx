@@ -1,14 +1,22 @@
 import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
 import CheckIcon from '@material-ui/icons/Check';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import Props from './props';
 import './product_item.scss';
 import React, {FunctionComponent} from 'react';
+import {Link} from 'react-router-dom';
 
 const ProductItem: FunctionComponent<Props> = ({product}) => {
     return (
-        <div className="product-item">
+        <Link
+            to={{
+                pathname: `/product/${product.sku}`,
+                state: {
+                    product: product
+                }
+            }}
+            className='product-item'
+        >
             <div className="product-media">
                 <img src={process.env.PUBLIC_URL + '/' + product.image} alt=""/>
             </div>
@@ -18,10 +26,10 @@ const ProductItem: FunctionComponent<Props> = ({product}) => {
                     <span className="sku">{product.sku}</span>
                 </div>
                 <div className="product-pricing">
-          <span className="price">
-            <EuroSymbolIcon className="icon" fontSize="small"/>
-              {product.price.toString()}
-          </span>
+                    <span className="price">
+                        <EuroSymbolIcon className="icon" fontSize="small"/>
+                        {product.price.toString()}
+                    </span>
                 </div>
                 <div className="product-stock">
                     {product.stock > 0 ?
@@ -35,17 +43,14 @@ const ProductItem: FunctionComponent<Props> = ({product}) => {
                         )
                     }
                 </div>
-                <div className="product-actions">
-                    {
-                        product.stock > 0 &&
+                {
+                    product.stock > 0 &&
+                    <div className="product-actions">
                         <button className="action to-cart">In winkelwagen</button>
-                    }
-                    <button className="action icon-link to-wishlist">
-                        <FavoriteBorderIcon className="icon"/>
-                    </button>
-                </div>
+                    </div>
+                }
             </div>
-        </div>
+        </Link>
     );
 };
 

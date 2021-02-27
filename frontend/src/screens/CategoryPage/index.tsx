@@ -1,14 +1,14 @@
 import './category_page.scss';
 
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import Toolbar from '../Toolbar';
-import ProductItem from '../ProductItem';
+import Toolbar from '../../components/Toolbar';
+import ProductItem from '../../components/ProductItem';
 import {useLocation, useParams} from 'react-router-dom';
 import api from '../../config/api';
 import {ProductDTO} from '../../generated';
 
 type RouteParams = { slug: string };
-type LocationState = { id: string }
+type LocationState = { id: string };
 
 const CategoryPage: FunctionComponent = () => {
     const {slug} = useParams<RouteParams>();
