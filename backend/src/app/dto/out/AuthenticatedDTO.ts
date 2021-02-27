@@ -1,23 +1,23 @@
 import {ApiProperty} from '@nestjs/swagger';
-import {IsNotEmpty, IsString} from 'class-validator';
 
-export class AuthenticatedDto {
+export class AuthenticatedDTO {
 
     @ApiProperty({type: 'string'})
-    @IsNotEmpty()
-    @IsString()
     readonly userId: string;
 
     @ApiProperty({type: 'string'})
-    @IsNotEmpty()
-    @IsString()
+    readonly name: string;
+
+    @ApiProperty({type: 'string'})
     readonly accessToken: string;
 
     constructor(
         userId: string,
+        name: string,
         accessToken: string
     ) {
         this.userId = userId;
+        this.name = name;
         this.accessToken = accessToken;
     }
 }

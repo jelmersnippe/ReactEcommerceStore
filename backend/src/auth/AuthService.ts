@@ -1,6 +1,6 @@
 import {Inject, Injectable, UnauthorizedException} from '@nestjs/common';
 import {JwtService} from '@nestjs/jwt';
-import {AuthenticatedDto} from './out/AuthenticatedDto';
+import {AuthenticatedDTO} from '../app/dto/out/AuthenticatedDTO';
 import {UserEntity} from '../entities/user/UserEntity';
 import {Repository} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';
@@ -27,7 +27,7 @@ export class AuthService {
         return existingUser;
     }
 
-    async login(email: string, password: string): Promise<AuthenticatedDto> {
+    async login(email: string, password: string): Promise<AuthenticatedDTO> {
         const existingUser: UserEntity | undefined = await this.userRepository.createQueryBuilder()
             .where('LOWER(email) = LOWER(:email)', {email})
             .andWhere('active = true')
@@ -39,6 +39,7 @@ export class AuthService {
 
         return {
             userId: existingUser.id,
+            name: existingUser.firstName + ' ' + existingUser.lastName,
             accessToken: this.jwtService.sign({id: existingUser.id})
         };
     }
