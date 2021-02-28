@@ -6,6 +6,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
 import {AuthModule} from '../auth/AuthModule';
 import {PassportModule} from '@nestjs/passport';
 import {CategoryModule} from '../entities/category/CategoryModule';
+import {CartItemModule} from '../entities/cartItem/CartItemModule';
 
 @Module({
     imports: [
@@ -42,7 +43,8 @@ import {CategoryModule} from '../entities/category/CategoryModule';
             })
         }),
         UserModule,
-        CategoryModule
+        CategoryModule,
+        CartItemModule
     ],
     controllers: [
         AppController

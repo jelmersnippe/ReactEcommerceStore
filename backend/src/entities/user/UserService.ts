@@ -6,7 +6,6 @@ import {CreateUserDto} from './in/CreateUserDto';
 import * as bcrypt from 'bcrypt';
 import {UpdateUserDto} from './in/UpdateUserDto';
 import {CartItemEntity} from '../cartItem/CartItemEntity';
-import {ProductEntity} from '../product/ProductEntity';
 
 @Injectable()
 export class UserService {
@@ -73,25 +72,5 @@ export class UserService {
         }
 
         await this.userRepository.delete({id});
-    }
-
-    async findCartItems(id: string): Promise<Array<{product: ProductEntity, qty: number}>> {
-        const userExists: UserEntity | undefined = await this.userRepository.findOne({id});
-        if (!userExists) {
-            throw new NotFoundException(`User with id ${id} does not exist`);
-        }
-
-        const cartItems = await this.cartItemRepository.createQueryBuilder("cart_item")
-            .innerJoinAndSelect("cart_item.product", "product", "product.active = :active", {active: true})
-            .where("cart_item.active = :active", { active: true })
-            .andWhere("cart_item.user_id = :userId", {userId: id})
-            .getMany();
-
-        console.log(cartItems);
-
-        return cartItems.map((cartItem) => ({
-            product: cartItem.product,
-            qty: cartItem.qty
-        }))
     }
 }

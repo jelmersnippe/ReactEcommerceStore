@@ -14,8 +14,6 @@ import {
 import {UserDto} from './out/UserDto';
 import {AuthGuard} from '@nestjs/passport';
 import {UpdateUserDto} from './in/UpdateUserDto';
-import {CartItemDTO} from '../cartItem/dto/out/CartItemDTO';
-import {ProductEntity} from '../product/ProductEntity';
 
 @ApiTags('user')
 @Controller('user')
@@ -92,21 +90,5 @@ export class UserController {
     @HttpCode(200)
     async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
         return this.userService.remove(id);
-    }
-
-    @ApiBearerAuth()
-    @ApiOkResponse({description: '', type: [CartItemDTO]})
-    @ApiUnauthorizedResponse()
-    @ApiNotFoundResponse()
-    @ApiInternalServerErrorResponse()
-    @Get('/:id/cartItems')
-    @UseGuards(AuthGuard())
-    @HttpCode(200)
-    async findCartItems(@Param('id', ParseUUIDPipe) id: string): Promise<Array<CartItemDTO>> {
-        return await this.userService
-            .findCartItems(id)
-            .then((cartItems: Array<{product: ProductEntity, qty: number}>) =>
-                cartItems.map((cartItem) =>
-                    new CartItemDTO(cartItem.product, cartItem.qty)))
     }
 }
