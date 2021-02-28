@@ -14,6 +14,13 @@ export const addItemToCart = (product: ProductDTO, qty: number): CartActionTypes
     }
 }
 
+export const removeItemFromCart = (id: string): CartActionTypes => {
+    return {
+        type: CartAction.REMOVE_ITEM,
+        payload: {id}
+    }
+}
+
 export const updateQty = (id: string, qty: number): CartActionTypes => {
     return {
         type: CartAction.UPDATE_QTY,

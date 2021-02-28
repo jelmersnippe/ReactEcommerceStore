@@ -15,6 +15,7 @@ export type CartState = {
 export enum CartAction {
     RESET = 'RESET',
     ADD_ITEM = 'ADD_ITEM',
+    REMOVE_ITEM = 'REMOVE_ITEM',
     UPDATE_QTY = 'UPDATE_QTY'
 }
 
@@ -30,6 +31,13 @@ interface AddItemAction {
     }
 }
 
+interface RemoveItemAction {
+    type: CartAction.REMOVE_ITEM;
+    payload: {
+        id: string
+    }
+}
+
 interface UpdateQtyAction {
     type: CartAction.UPDATE_QTY;
     payload: {
@@ -38,4 +46,4 @@ interface UpdateQtyAction {
     }
 }
 
-export type CartActionTypes = ResetAction | AddItemAction | UpdateQtyAction;
+export type CartActionTypes = ResetAction | AddItemAction | RemoveItemAction | UpdateQtyAction;

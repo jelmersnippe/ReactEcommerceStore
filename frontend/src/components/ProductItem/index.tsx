@@ -34,9 +34,9 @@ const ProductItem: FunctionComponent<Props> = ({product}) => {
                         {product.stock > 0 ?
                             (
                                 <span className="available">
-                            <CheckIcon className="icon"/>
-                            In stock
-                        </span>
+                                    <CheckIcon className="icon"/>
+                                    In stock
+                                </span>
                             ) : (
                                 <span className="unavailable">Out of stock</span>
                             )

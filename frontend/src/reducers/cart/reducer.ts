@@ -13,13 +13,27 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 return state;
             }
 
+            const filteredItems = state.items.filter((item) => item.id !== action.payload.id);
+
+            if (action.payload.qty <= 0) {
+                return {
+                    ...state,
+                    items: filteredItems
+                }
+            }
+
             return {
                 ...state,
                 items: [
-                    ...state.items.filter((item) => item.id !== action.payload.id),
+                    ...filteredItems,
                     {...itemToUpdate, qty: action.payload.qty}
                 ]
             };
+        case CartAction.REMOVE_ITEM:
+            return {
+                ...state,
+                items: state.items.filter((item) => item.id !== action.payload.id)
+            }
         case CartAction.ADD_ITEM:
             return {
                 ...state,
