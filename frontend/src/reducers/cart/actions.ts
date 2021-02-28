@@ -3,7 +3,7 @@ import {ProductDTO} from '../../generated';
 
 export const resetCart = (): CartActionTypes => {
     return {
-        type: CartAction.RESET
+        type: CartAction.RESET_CART
     }
 }
 

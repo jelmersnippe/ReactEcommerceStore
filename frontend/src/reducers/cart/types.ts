@@ -14,14 +14,14 @@ export type CartState = {
 }
 
 export enum CartAction {
-    RESET = 'RESET',
+    RESET_CART = 'RESET_CART',
     ADD_ITEM = 'ADD_ITEM',
     REMOVE_ITEM = 'REMOVE_ITEM',
     UPDATE_QTY = 'UPDATE_QTY'
 }
 
 interface ResetAction {
-    type: CartAction.RESET;
+    type: CartAction.RESET_CART;
 }
 
 interface AddItemAction {

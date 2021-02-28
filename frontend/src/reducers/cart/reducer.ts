@@ -61,7 +61,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 items: [...state.items, {...action.payload.product, qty: action.payload.qty}],
                 count: state.count + action.payload.qty
             };
-        case CartAction.RESET:
+        case CartAction.RESET_CART:
             return initialState;
         default:
             return state;
