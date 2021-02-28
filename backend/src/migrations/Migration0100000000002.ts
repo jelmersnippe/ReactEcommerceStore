@@ -42,18 +42,18 @@ export class Migration0100000000002 implements MigrationInterface {
             ]
         }));
 
-        await queryRunner.createForeignKey('category', new TableForeignKey({
-            columnNames: ['parent_category_id'],
-            referencedTableName: 'category',
-            referencedColumnNames: ['id']
-        }));
-
         await queryRunner.createIndex('category', new TableIndex({
             columnNames: ['parent_category_id']
         }));
 
         await queryRunner.createIndex('category', new TableIndex({
             columnNames: ['active']
+        }));
+
+        await queryRunner.createForeignKey('category', new TableForeignKey({
+            columnNames: ['parent_category_id'],
+            referencedTableName: 'category',
+            referencedColumnNames: ['id']
         }));
     }
 

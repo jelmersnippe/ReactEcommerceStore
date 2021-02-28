@@ -1,4 +1,5 @@
-import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, CreateDateColumn, Entity, Index, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {CartItemEntity} from '../cartItem/CartItemEntity';
 
 @Entity('user')
 export class UserEntity {
@@ -21,8 +22,11 @@ export class UserEntity {
     @Column({name: 'active', type: 'boolean', default: true})
     active: boolean;
 
-    @Column({name: 'created', type: 'timestamp'})
+    @CreateDateColumn({name: 'created', type: 'timestamp'})
     created: Date;
+
+    @OneToMany(() => CartItemEntity, (cartItem: CartItemEntity) => cartItem.user)
+    cartItems: CartItemEntity[];
 
     constructor(
         user: Partial<UserEntity>

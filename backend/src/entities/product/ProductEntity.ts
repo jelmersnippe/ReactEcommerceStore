@@ -1,5 +1,6 @@
-import {Column, Entity, Index, ManyToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, CreateDateColumn, Entity, Index, ManyToMany, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {CategoryEntity} from '../category/CategoryEntity';
+import {CartItemEntity} from '../cartItem/CartItemEntity';
 
 @Entity('product')
 export class ProductEntity {
@@ -26,11 +27,14 @@ export class ProductEntity {
     @Column({name: 'active', type: 'boolean', default: true})
     active: boolean;
 
-    @Column({name: 'created', type: 'timestamp'})
+    @CreateDateColumn({name: 'created', type: 'timestamp'})
     created: Date;
 
     @ManyToMany(() => CategoryEntity, (category: CategoryEntity) => category.products)
     categories: CategoryEntity[];
+
+    @OneToMany(() => CartItemEntity, (cartItem: CartItemEntity) => cartItem.product)
+    cartItems: CartItemEntity[];
 
     constructor(
         product: Partial<ProductEntity>

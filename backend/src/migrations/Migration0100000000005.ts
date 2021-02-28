@@ -1,19 +1,23 @@
 import {MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex} from 'typeorm';
 import {NotImplementedException} from '@nestjs/common';
 
-export class Migration0100000000004 implements MigrationInterface {
+export class Migration0100000000005 implements MigrationInterface {
 
     async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'category_product_junction',
+            name: 'cart_item',
             columns: [
                 {
-                    name: 'category_id',
+                    name: 'user_id',
                     type: 'uuid'
                 },
                 {
                     name: 'product_id',
                     type: 'uuid'
+                },
+                {
+                    name: 'qty',
+                    type: 'integer'
                 },
                 {
                     name: 'active',
@@ -28,30 +32,30 @@ export class Migration0100000000004 implements MigrationInterface {
             ]
         }));
 
-        await queryRunner.createIndex('category_product_junction', new TableIndex({
-            columnNames: ['category_id']
+        await queryRunner.createIndex('cart_item', new TableIndex({
+            columnNames: ['user_id']
         }));
 
-        await queryRunner.createIndex('category_product_junction', new TableIndex({
+        await queryRunner.createIndex('cart_item', new TableIndex({
             columnNames: ['product_id']
         }));
 
-        await queryRunner.createIndex('category_product_junction', new TableIndex({
-            columnNames: ['category_id', 'product_id'],
+        await queryRunner.createIndex('cart_item', new TableIndex({
+            columnNames: ['user_id', 'product_id'],
             isUnique: true
         }));
 
-        await queryRunner.createIndex('category_product_junction', new TableIndex({
+        await queryRunner.createIndex('cart_item', new TableIndex({
             columnNames: ['active']
         }));
 
-        await queryRunner.createForeignKey('category_product_junction', new TableForeignKey({
-            columnNames: ['category_id'],
-            referencedTableName: 'category',
+        await queryRunner.createForeignKey('cart_item', new TableForeignKey({
+            columnNames: ['user_id'],
+            referencedTableName: 'user',
             referencedColumnNames: ['id']
         }));
 
-        await queryRunner.createForeignKey('category_product_junction', new TableForeignKey({
+        await queryRunner.createForeignKey('cart_item', new TableForeignKey({
             columnNames: ['product_id'],
             referencedTableName: 'product',
             referencedColumnNames: ['id']

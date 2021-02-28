@@ -1,4 +1,15 @@
-import {Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    Index,
+    JoinColumn,
+    JoinTable,
+    ManyToMany,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from 'typeorm';
 import {ProductEntity} from '../product/ProductEntity';
 
 @Entity('category')
@@ -16,7 +27,7 @@ export class CategoryEntity {
     @Column({name: 'active', type: 'boolean', default: true})
     active: boolean;
 
-    @Column({name: 'created', type: 'timestamp'})
+    @CreateDateColumn({name: 'created', type: 'timestamp'})
     created: Date;
 
     @OneToMany(() => CategoryEntity, (category: CategoryEntity) => category.parentCategory)
