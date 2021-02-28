@@ -7,14 +7,16 @@ import {Link} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './header.scss';
+import {RootState} from '../../config/store';
+import {useSelector} from 'react-redux';
 
 const Header: FunctionComponent = () => {
     const [navbarOpened, setNavbarOpened] = useState(false);
+    const cartCount = useSelector((state: RootState) => state.cart.count);
 
     return (
         <header>
             <UspBar/>
-
             <div className="layout-wrapper header">
                 <div className="layout-container">
                     <div className="header-content">
@@ -48,6 +50,7 @@ const Header: FunctionComponent = () => {
                                 }}
                             >
                                 <ShoppingCartIcon className="icon cart"/>
+                                {cartCount > 0 && <span>{cartCount}</span>}
                             </Link>
                         </div>
                     </div>

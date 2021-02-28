@@ -9,7 +9,8 @@ export interface CartItem {
 }
 
 export type CartState = {
-    items: Array<CartItem>
+    items: Array<CartItem>,
+    count: number
 }
 
 export enum CartAction {
