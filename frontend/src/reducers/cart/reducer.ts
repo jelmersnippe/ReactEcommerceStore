@@ -46,6 +46,16 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 }, 0)
             }
         case CartAction.ADD_ITEM:
+            const existingItem = state.items.find((item) => item.id === action.payload.product.id);
+
+            if (existingItem) {
+                return {
+                    ...state,
+                    items: [...state.items.filter((item) => item.id !== action.payload.product.id), {...existingItem, qty: existingItem.qty + action.payload.qty}],
+                    count: state.count + action.payload.qty
+                }
+            }
+
             return {
                 ...state,
                 items: [...state.items, {...action.payload.product, qty: action.payload.qty}],
