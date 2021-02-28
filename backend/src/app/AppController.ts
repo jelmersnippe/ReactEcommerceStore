@@ -21,10 +21,9 @@ export class AppController {
     @ApiUnauthorizedResponse()
     @ApiInternalServerErrorResponse()
     @Post('/auth/login')
-    async login(@Body() login: LoginDto): Promise<AuthenticatedDTO & { cart: Array<CartItemDTO> }> {
+    async login(@Body() login: LoginDto): Promise<AuthenticatedDTO> {
         const authenticatedObject = await this.authService
-            .login(login.email.toLowerCase(), login.password)
-            .then((result: { userId: string, name: string, accessToken: string }) => new AuthenticatedDTO(result.userId, result.name, result.accessToken));
+            .login(login.email.toLowerCase(), login.password);
 
         const cart = await this.cartItemService
             .find(authenticatedObject.userId)
@@ -32,9 +31,6 @@ export class AppController {
                 cartItems.map((cartItem) =>
                     new CartItemDTO(cartItem.product, cartItem.qty)));
 
-        return {
-            ...authenticatedObject,
-            cart
-        }
+        return new AuthenticatedDTO(authenticatedObject.userId, authenticatedObject.name, authenticatedObject.accessToken, cart);
     }
 }
