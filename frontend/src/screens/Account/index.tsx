@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../config/store';
 import './styles.scss';
 import api from '../../config/api';
-import {setUser} from '../../reducers/user/actions';
+import {resetUser, setUser} from '../../reducers/user/actions';
 
 const Account: FunctionComponent = () => {
     const [email, setEmail] = useState<string>('');
@@ -38,7 +38,10 @@ const Account: FunctionComponent = () => {
         <div>
             {
                 user.accessToken ?
-                    <h2>Welkom {user.name}</h2>
+                    <div className="login form">
+                        <h2>Welkom {user.name}</h2>
+                        <button onClick={() => dispatch(resetUser())}>Uitloggen</button>
+                    </div>
                     :
                     <div className="wrapper">
                         <div className="login form">
