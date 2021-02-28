@@ -15,7 +15,8 @@ import {CartItemModule} from '../entities/cartItem/CartItemModule';
         ConfigModule.forRoot(),
         TypeOrmModule.forRootAsync({
             imports: [
-                ConfigModule
+                ConfigModule,
+                CartItemModule
             ],
             inject: [
                 ConfigService
