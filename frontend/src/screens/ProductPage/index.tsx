@@ -6,7 +6,8 @@ import QtyInput from '../../components/QtyInput';
 import CheckIcon from '@material-ui/icons/Check';
 import PriceDisplay from '../../components/PriceDisplay';
 import {useDispatch} from 'react-redux';
-import {addItemToCart} from '../../reducers/cart/actions';
+import {setCart} from '../../reducers/cart/actions';
+import api from '../../config/api';
 
 type LocationState = { product: ProductDTO };
 
@@ -14,6 +15,13 @@ const ProductPage: FunctionComponent = () => {
     const {state} = useLocation<LocationState>();
     const [qty, setQty] = useState<number>(0);
     const dispatch = useDispatch();
+
+    const addItemToCart = () => {
+        api.cart.updateCartItem({id: state.product.id, qty: qty})
+            .then((response) => {
+                dispatch(setCart(response.data));
+            });
+    };
 
     return (
         <div className="wrapper">
@@ -42,7 +50,7 @@ const ProductPage: FunctionComponent = () => {
                                     className="action to-cart"
                                     onClick={() => {
                                         if (qty > 0) {
-                                            dispatch(addItemToCart(state.product, qty));
+                                            addItemToCart();
                                             setQty(0);
                                         }
                                     }}

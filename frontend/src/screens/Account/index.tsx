@@ -20,7 +20,7 @@ const Account: FunctionComponent = () => {
         }
         api.app.login({email, password})
             .then((response) => {
-                const data = response.data
+                const data = response.data;
                 dispatch(setUser({
                     accessToken: data.accessToken,
                     id: data.userId,

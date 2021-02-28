@@ -1,15 +1,7 @@
-import {ProductDTO} from '../../generated';
-
-export interface CartItem {
-    name: string;
-    price: number;
-    qty: number;
-    id: string;
-    image: string;
-}
+import {CartItemDTO, ProductDTO} from '../../generated';
 
 export type CartState = {
-    items: Array<CartItem>,
+    items: Array<CartItemDTO>,
     count: number
 }
 

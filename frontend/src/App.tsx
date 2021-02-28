@@ -6,11 +6,20 @@ import Header from './components/Header';
 import Home from './screens/Home';
 import CategoryPage from './screens/CategoryPage';
 import ProductPage from './screens/ProductPage';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Cart from './screens/Cart';
 import Account from './screens/Account';
+import api from './config/api';
+import {RootState} from './config/store';
+import {useSelector} from 'react-redux';
 
 function App() {
+    const accessToken = useSelector((state: RootState) => state.user.accessToken);
+
+    useEffect(() => {
+        accessToken && api.setBearerAccessToken(accessToken);
+    }, [accessToken])
+
     return (
         <div className="app-wrapper">
             <Header/>

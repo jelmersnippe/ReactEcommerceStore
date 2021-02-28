@@ -5,11 +5,19 @@ import './product_item.scss';
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 import PriceDisplay from '../PriceDisplay';
-import {addItemToCart} from '../../reducers/cart/actions';
+import {setCart} from '../../reducers/cart/actions';
 import {useDispatch} from 'react-redux';
+import api from '../../config/api';
 
 const ProductItem: FunctionComponent<Props> = ({product}) => {
     const dispatch = useDispatch();
+
+    const addItemToCart = () => {
+        api.cart.updateCartItem({id: product.id, qty: 1})
+            .then((response) => {
+                dispatch(setCart(response.data));
+            });
+    }
 
     return (
         <div className='product-item'>
@@ -47,7 +55,7 @@ const ProductItem: FunctionComponent<Props> = ({product}) => {
             {
                 product.stock > 0 &&
                 <div className="product-actions">
-                    <button className="action to-cart" onClick={() => dispatch(addItemToCart(product, 1))}>In winkelwagen</button>
+                    <button className="action to-cart" onClick={() => addItemToCart()}>In winkelwagen</button>
                 </div>
             }
         </div>

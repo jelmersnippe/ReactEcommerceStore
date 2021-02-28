@@ -11,7 +11,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
             return {
                 ...state,
                 items: action.payload.map((item) => ({
-                    ...item.product,
+                    product: item.product,
                     qty: item.qty
                 })),
                 count: action.payload.map((item) => item.qty).reduce((acc, cur) => {
@@ -19,13 +19,13 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 }, 0)
             };
         case CartAction.UPDATE_QTY:
-            const itemToUpdate = state.items.find((item) => item.id === action.payload.id);
+            const itemToUpdate = state.items.find((item) => item.product.id === action.payload.id);
 
             if (!itemToUpdate) {
                 return state;
             }
 
-            const filteredItems = state.items.filter((item) => item.id !== action.payload.id);
+            const filteredItems = state.items.filter((item) => item.product.id !== action.payload.id);
             const filteredCount = filteredItems.map((item) => item.qty).reduce((acc, cur) => {
                 return acc + cur;
             }, 0);
@@ -47,7 +47,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 count: filteredCount + action.payload.qty
             };
         case CartAction.REMOVE_ITEM:
-            const newItems = state.items.filter((item) => item.id !== action.payload.id);
+            const newItems = state.items.filter((item) => item.product.id !== action.payload.id);
 
             return {
                 ...state,
@@ -57,12 +57,12 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 }, 0)
             };
         case CartAction.ADD_ITEM:
-            const existingItem = state.items.find((item) => item.id === action.payload.product.id);
+            const existingItem = state.items.find((item) => item.product.id === action.payload.product.id);
 
             if (existingItem) {
                 return {
                     ...state,
-                    items: [...state.items.filter((item) => item.id !== action.payload.product.id), {
+                    items: [...state.items.filter((item) => item.product.id !== action.payload.product.id), {
                         ...existingItem,
                         qty: existingItem.qty + action.payload.qty
                     }],
@@ -72,7 +72,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
 
             return {
                 ...state,
-                items: [...state.items, {...action.payload.product, qty: action.payload.qty}],
+                items: [...state.items, action.payload],
                 count: state.count + action.payload.qty
             };
         case CartAction.RESET_CART:

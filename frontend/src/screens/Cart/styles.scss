@@ -1,3 +1,10 @@
-.order {
-    margin: 10px 10px 0 auto;
+.bottom-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
+    .order {
+        margin-left: auto;
+    }
 }

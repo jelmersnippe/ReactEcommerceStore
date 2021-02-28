@@ -1,5 +1,5 @@
-import {CartItem} from '../../reducers/cart/types';
+import {CartItemDTO} from '../../generated';
 
 export default interface Props {
-    item: CartItem;
+    item: CartItemDTO;
 }
