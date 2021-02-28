@@ -2,6 +2,7 @@ import globalAxios from 'axios';
 import {Configuration} from '../generated';
 import {
 	AppApi,
+	CartApi,
 	CategoryApi,
 	UserApi
 } from '../generated';
@@ -22,6 +23,7 @@ class Api {
     apiConfig = new Configuration({basePath: baseUrl});
 
     app = new AppApi(this.apiConfig)
+	cart = new CartApi(this.apiConfig)
 	category = new CategoryApi(this.apiConfig)
 	user = new UserApi(this.apiConfig)
 	
@@ -37,6 +39,7 @@ class Api {
 
     updateApiInstances() {
         this.app = new AppApi(this.apiConfig)
+		this.cart = new CartApi(this.apiConfig)
 		this.category = new CategoryApi(this.apiConfig)
 		this.user = new UserApi(this.apiConfig)
 		

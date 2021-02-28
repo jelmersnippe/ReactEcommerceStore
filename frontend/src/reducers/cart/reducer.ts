@@ -7,6 +7,17 @@ const initialState: CartState = {
 
 const cartReducer = (state = initialState, action: CartActionTypes): CartState => {
     switch (action.type) {
+        case CartAction.SET_CART:
+            return {
+                ...state,
+                items: action.payload.map((item) => ({
+                    ...item.product,
+                    qty: item.qty
+                })),
+                count: action.payload.map((item) => item.qty).reduce((acc, cur) => {
+                    return acc + cur;
+                }, 0)
+            };
         case CartAction.UPDATE_QTY:
             const itemToUpdate = state.items.find((item) => item.id === action.payload.id);
 
@@ -16,15 +27,15 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
 
             const filteredItems = state.items.filter((item) => item.id !== action.payload.id);
             const filteredCount = filteredItems.map((item) => item.qty).reduce((acc, cur) => {
-                return acc + cur
-            }, 0)
+                return acc + cur;
+            }, 0);
 
             if (action.payload.qty <= 0) {
                 return {
                     ...state,
                     items: filteredItems,
                     count: filteredCount
-                }
+                };
             }
 
             return {
@@ -36,24 +47,27 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartState =
                 count: filteredCount + action.payload.qty
             };
         case CartAction.REMOVE_ITEM:
-            const newItems = state.items.filter((item) => item.id !== action.payload.id)
+            const newItems = state.items.filter((item) => item.id !== action.payload.id);
 
             return {
                 ...state,
                 items: newItems,
                 count: newItems.map((item) => item.qty).reduce((acc, cur) => {
-                    return acc + cur
+                    return acc + cur;
                 }, 0)
-            }
+            };
         case CartAction.ADD_ITEM:
             const existingItem = state.items.find((item) => item.id === action.payload.product.id);
 
             if (existingItem) {
                 return {
                     ...state,
-                    items: [...state.items.filter((item) => item.id !== action.payload.product.id), {...existingItem, qty: existingItem.qty + action.payload.qty}],
+                    items: [...state.items.filter((item) => item.id !== action.payload.product.id), {
+                        ...existingItem,
+                        qty: existingItem.qty + action.payload.qty
+                    }],
                     count: state.count + action.payload.qty
-                }
+                };
             }
 
             return {

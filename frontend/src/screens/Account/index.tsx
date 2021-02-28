@@ -4,6 +4,7 @@ import {RootState} from '../../config/store';
 import './styles.scss';
 import api from '../../config/api';
 import {resetUser, setUser} from '../../reducers/user/actions';
+import {setCart} from '../../reducers/cart/actions';
 
 const Account: FunctionComponent = () => {
     const [email, setEmail] = useState<string>('');
@@ -18,12 +19,15 @@ const Account: FunctionComponent = () => {
             return;
         }
         api.app.login({email, password})
-            .then((response) =>
+            .then((response) => {
+                const data = response.data
                 dispatch(setUser({
-                    accessToken: response.data.accessToken,
-                    id: response.data.userId,
-                    name: response.data.name
-                })))
+                    accessToken: data.accessToken,
+                    id: data.userId,
+                    name: data.name
+                }));
+                dispatch(setCart(data.cart))
+            })
     }
 
     const signup = async (email: string, firstName: string, lastName: string, password: string) => {

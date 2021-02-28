@@ -14,10 +14,19 @@ export type CartState = {
 }
 
 export enum CartAction {
+    SET_CART = 'SET_CART',
     RESET_CART = 'RESET_CART',
     ADD_ITEM = 'ADD_ITEM',
     REMOVE_ITEM = 'REMOVE_ITEM',
     UPDATE_QTY = 'UPDATE_QTY'
+}
+
+interface SetAction {
+    type: CartAction.SET_CART;
+    payload: Array<{
+        product: ProductDTO;
+        qty: number;
+    }>
 }
 
 interface ResetAction {
@@ -47,4 +56,4 @@ interface UpdateQtyAction {
     }
 }
 
-export type CartActionTypes = ResetAction | AddItemAction | RemoveItemAction | UpdateQtyAction;
+export type CartActionTypes = SetAction | ResetAction | AddItemAction | RemoveItemAction | UpdateQtyAction;
