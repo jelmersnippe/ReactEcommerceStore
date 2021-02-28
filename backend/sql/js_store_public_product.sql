@@ -1,0 +1,1 @@
+INSERT INTO public.product (id, name, sku, image, price, stock, active, created) VALUES ('7a9376ea-f22b-4048-8755-78845308b188', 'HP Laptop 14s-dq1730nd - Laptop - 14 Inch', '000001', 'shoes.jpg', 569, 4, true, '2021-02-21 16:42:33.823118');

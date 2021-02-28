@@ -1,0 +1,1 @@
+INSERT INTO public."user" (id, email, first_name, last_name, password, active, created) VALUES ('5fe64ccb-441a-4d1e-84e8-6ab39a9b73bc', 'jelmersnippe@hotmail.com', 'Jelmer', 'Snippe', '$2b$04$BacagbKdJWv0NopfqxrblOzmzBmlbyozyTtDa8m6Ax.fjhI4OoNSe', true, '2021-02-27 20:15:31.092107');

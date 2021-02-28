@@ -1,0 +1,1 @@
+INSERT INTO public.category_product_junction (category_id, product_id, active, created) VALUES ('ae3b6143-44ba-403e-a383-a3b2ba49067a', '7a9376ea-f22b-4048-8755-78845308b188', true, '2021-02-21 16:42:46.468050');
